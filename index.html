@@ -1,19 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>API Search</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <h1>API Search</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recipe Browser</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>🍽️ Recipe Browser</h1>
+        <p>Discover delicious recipes from around the world</p>
+      </header>
 
-  <select name="area-select" id="area-select">
-    <option value="">Select Area</option>
-  </select>
+      <div class="controls">
+        <div class="select-wrapper">
+          <select id="areaSelect">
+            <option value="">Select a cuisine...</option>
+          </select>
+        </div>
+      </div>
 
-  <div id="results"></div>
-  <script src="script.js"></script>
-</body>
+      <div id="loading" class="loading" style="display: none">
+        Loading recipes...
+      </div>
+
+      <div id="emptyState" class="empty-state">
+        <h2>Welcome!</h2>
+        <p>Select a cuisine from the dropdown above to browse recipes</p>
+      </div>
+
+      <div id="recipesGrid" class="recipes-grid"></div>
+    </div>
+
+    <!-- Recipe Detail Modal -->
+    <div id="recipeModal" class="modal">
+      <div class="modal-content">
+        <button class="close-btn" onclick="closeModal()">&times;</button>
+        <div class="modal-header">
+          <img id="modalImage" src="" alt="" />
+        </div>
+        <div class="modal-body">
+          <h2 id="modalTitle"></h2>
+          <div class="recipe-meta" id="recipeMeta"></div>
+
+          <div class="section">
+            <h3>📝 Ingredients</h3>
+            <div class="ingredients-list" id="ingredientsList"></div>
+          </div>
+
+          <div class="section">
+            <h3>👨‍🍳 Instructions</h3>
+            <div class="instructions" id="instructions"></div>
+          </div>
+
+          <div id="videoSection" class="video-section" style="display: none">
+            <div class="section">
+              <h3>🎥 Video Tutorial</h3>
+              <div class="video-wrapper" id="videoWrapper"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
 </html>
